@@ -113,6 +113,15 @@ public class AuditeurCNAMTest extends junit.framework.TestCase {
         assertEquals("nom court avec particules ? ", "te_te_m",
             auditeur1.login());
     }
+    
+    public void test_matest(){
+        question3.AuditeurCNAM auditeur1 = new question3.AuditeurCNAM("Elie.Jean",
+                "Mbayed", "12222");
+        assertEquals("Mr Éli-Jean Mbayed", "Elie.Jean", auditeur1.nom());
+        assertEquals("Mr Éli-Jean Mbayed", "Mbayed", auditeur1.prenom());
+        assertEquals("nom court avec particules ? ", "elie_j_m",
+            auditeur1.login());
+    }
 
     public void test_nom_avec_accent() {
         question3.AuditeurCNAM auditeur1 = new question3.AuditeurCNAM("Chloé",

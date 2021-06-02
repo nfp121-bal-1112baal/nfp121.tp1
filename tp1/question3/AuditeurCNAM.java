@@ -44,17 +44,43 @@ public class AuditeurCNAM {
      * @return le login du Cnam simplifié, sans les adaptations dues aux
      *         homonymes...
      */
-    public String login() {
-        return "";// à compléter
+    public String login()
+    {
+    	String nom=eliminateAccent(nom());
+    	String prenon=eliminateAccent(prenom());
+    	
+    	String n=nom.replaceAll("[^a-zA-Z0-9]+","_");
+    	String p=prenom.replaceAll("[^a-zA-Z0-9]+","_");
+    	
+    	String nlc=n.toLowerCase();
+    	String plc=p.toLowerCase();
+    	
+    	if(nlc.length()>=6)
+    	{
+        	String nf=nlc.substring(0,6);
+    		return nf+"_"+plc.charAt(0);
+    	}
+    	else return nlc+"_"+plc.charAt(0);
     }
-
+    
+    public String eliminateAccent(String s)
+    {
+        String a = "àâäãéèêëîïìöôòõüûùÀÂÄÃÉÈÊËÎÏÌÖÔÒÕÜÛÙ";
+        String w = "aaaaeeeeiiioooouuuaaaaeeeeiiioooouuu";
+        for(int i = 0; i<a.length() ; i++)
+        {
+            s = s.replace(a.charAt(i), w.charAt(i));
+        }
+        return s;
+    }
+    
     /**
      * Lecture du nom de l'auditeur.
      * 
      * @return son nom
      */
     public String nom() {
-        return null;// à compléter
+        return nom;
     }
 
     /**
@@ -63,7 +89,7 @@ public class AuditeurCNAM {
      * @return son prénom
      */
     public String prenom() {
-        return null;// à compléter
+        return prenom;
     }
 
     /**
@@ -72,7 +98,7 @@ public class AuditeurCNAM {
      * @return son matricule
      */
     public String matricule() {
-        return null;// à compléter
+        return matricule;
     }
 
     /**
